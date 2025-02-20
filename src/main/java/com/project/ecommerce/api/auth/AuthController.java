@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.ecommerce.api.model.LoginBody;
+import com.project.ecommerce.api.model.LoginResponse;
 import com.project.ecommerce.api.model.UserRegisterationBody;
 import com.project.ecommerce.exception.UserAlreadyExists;
 import com.project.ecommerce.service.UserService;
@@ -36,6 +38,22 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> loginUser(@Valid @RequestBody LoginBody loginBody) {
+
+        
+        String jwt = userService.loginUser(loginBody);
+        if (jwt == null) {
+            
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } 
+        else {
+            LoginResponse response = new LoginResponse();
+            response.setJwt(jwt);
+            return ResponseEntity.ok(response);
+        }
     }
 
 }

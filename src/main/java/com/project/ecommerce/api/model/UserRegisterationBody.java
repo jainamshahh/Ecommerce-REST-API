@@ -3,6 +3,7 @@ package com.project.ecommerce.api.model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class UserRegisterationBody {
@@ -16,6 +17,12 @@ public class UserRegisterationBody {
     @NotBlank
     @Email    
     private String email;
+
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")
+    @Size(min=6, max=32)
+    private String password;
 
     @NotNull
     @NotBlank    
@@ -48,6 +55,12 @@ public class UserRegisterationBody {
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

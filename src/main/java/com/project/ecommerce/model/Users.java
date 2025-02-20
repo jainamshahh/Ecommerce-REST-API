@@ -24,6 +24,9 @@ public class Users {
     @Column(unique = true , length = 255 , nullable = false)
     private String username;
 
+    @Column(nullable = false, length = 1000)
+    private String password;
+
     @Column(unique = true , length = 320 , nullable = false)
     private String email;
 
@@ -82,6 +85,14 @@ public class Users {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     
