@@ -26,9 +26,9 @@ public class AuthController {
         this.userService=userService;
     }
 
-    @SuppressWarnings("rawtypes")
+    
     @PostMapping("/register")
-    public ResponseEntity registerUser(@Valid @RequestBody UserRegisterationBody newUser){
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserRegisterationBody newUser){
 
         try{
             userService.regiserUser(newUser);
