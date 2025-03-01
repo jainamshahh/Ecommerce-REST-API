@@ -3,6 +3,8 @@ package com.project.ecommerce.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +26,7 @@ public class Users {
     @Column(unique = true , length = 255 , nullable = false)
     private String username;
 
+    @JsonIgnore
     @Column(nullable = false, length = 1000)
     private String password;
 
@@ -36,6 +39,7 @@ public class Users {
     @Column(length = 255 , nullable = false)
     private String lastName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
 
