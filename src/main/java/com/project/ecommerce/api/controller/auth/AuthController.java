@@ -31,7 +31,7 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserRegisterationBody newUser){
 
         try{
-            userService.regiserUser(newUser);
+            userService.registerUser(newUser);
             return ResponseEntity.ok().build();
         }
         catch(UserAlreadyExists e){

@@ -24,7 +24,7 @@ public class UserService {
         this.jwtService = jwtService;
     }
 
-    public Users regiserUser(UserRegisterationBody newUser) throws UserAlreadyExists{
+    public Users registerUser(UserRegisterationBody newUser) throws UserAlreadyExists{
 
         if(usersRepository.findByEmail(newUser.getEmail()).isPresent() || usersRepository.findByUsername(newUser.getUsername()).isPresent()){
             throw new UserAlreadyExists();
