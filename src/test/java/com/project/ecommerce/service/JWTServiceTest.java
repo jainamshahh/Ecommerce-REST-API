@@ -3,12 +3,14 @@ package com.project.ecommerce.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.project.ecommerce.model.Users;
 import com.project.ecommerce.repository.UsersRepository;
 
 @SpringBootTest
+@AutoConfigureMockMvc // not required for this class , added due to bug in junit
 public class JWTServiceTest {
 
     private JWTService jwtService;

@@ -3,6 +3,7 @@ package com.project.ecommerce.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.project.ecommerce.api.model.LoginBody;
@@ -12,6 +13,7 @@ import com.project.ecommerce.exception.UserAlreadyExists;
 import jakarta.transaction.Transactional;
 
 @SpringBootTest
+@AutoConfigureMockMvc // not required for this class , added due to bug in junit
 public class UserServiceTest {
 
     
