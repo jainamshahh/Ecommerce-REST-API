@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.project.ecommerce.model.Users;
 
 import jakarta.annotation.PostConstruct;
@@ -40,8 +41,9 @@ public class JWTService {
             .sign(algorithm);
     }
 
-    public String getUsername(String jwt){
+    public String getUsername(String token){
         //todo - verify jwt first
-        return JWT.decode(jwt).getClaim("username").asString();
+        DecodedJWT jwt = JWT.require(algorithm).withIssuer(issuer).build().verify(token);
+        return jwt.getClaim("username").asString();
     }
 }
